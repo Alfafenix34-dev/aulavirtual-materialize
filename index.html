@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Juan Alejandro Castañeda Muñoz">
+  <meta name="description" content="AulaVirtual — Sistema de Gestión Escolar. Conectando docentes, estudiantes y administradores.">
+  <title>AulaVirtual | Sistema de Gestión Escolar</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<!-- ── SIDENAV MÓVIL ─────────────────────────────────────── -->
+<ul class="sidenav" id="side-nav">
+  <li>
+    <div style="background:linear-gradient(135deg,#1A237E,#283593);padding:2rem 1.5rem;">
+      <i class="material-icons white-text" style="font-size:2.4rem;">school</i>
+      <h5 class="white-text" style="margin:.5rem 0 0;font-weight:700;">AulaVirtual</h5>
+      <p class="white-text" style="margin:0;font-size:.82rem;opacity:.8;">Sistema de Gestión Escolar</p>
+    </div>
+  </li>
+  <li><a href="index.html"     class="waves-effect"><i class="material-icons">home</i>Inicio</a></li>
+  <li><a href="informacion.html" class="waves-effect"><i class="material-icons">info</i>La Institución</a></li>
+  <li><a href="registro.html"  class="waves-effect"><i class="material-icons">person_add</i>Registro</a></li>
+  <li><a href="login.html"     class="waves-effect"><i class="material-icons">login</i>Iniciar sesión</a></li>
+  <li><div class="divider"></div></li>
+  <li><a href="#modulos"       class="waves-effect"><i class="material-icons">dashboard</i>Módulos</a></li>
+  <li><a href="#roles"         class="waves-effect"><i class="material-icons">groups</i>Tipos de usuario</a></li>
+  <li><a href="#contacto"      class="waves-effect"><i class="material-icons">contact_mail</i>Contacto</a></li>
+</ul>
+
+<!-- ── NAVBAR PRINCIPAL ──────────────────────────────────── -->
+<nav class="av-nav">
+  <div class="nav-wrapper container">
+    <a href="#" data-target="side-nav" class="sidenav-trigger">
+      <i class="material-icons">menu</i>
+    </a>
+    <a href="index.html" class="brand-logo">
+      <i class="material-icons">school</i> AulaVirtual
+    </a>
+    <ul class="right hide-on-med-and-down">
+      <li class="active"><a href="index.html">Inicio</a></li>
+      <li><a href="informacion.html">La Institución</a></li>
+      <li><a href="#modulos">Módulos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li>
+        <a href="registro.html"
+           class="btn btn-flat white-text waves-effect btn-pill"
+           style="border:1.5px solid rgba(255,255,255,.5);margin:10px 4px 0;">
+          Registrarse
+        </a>
+      </li>
+      <li>
+        <a href="login.html"
+           class="btn waves-effect waves-light btn-pill btn-accent"
+           style="margin:10px 0 0;">
+          <i class="material-icons left">login</i>Ingresar
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── HERO ───────────────────────────────────────────────── -->
+<section class="av-hero" id="inicio">
+  <div class="container">
+    <div class="row valign-wrapper" style="margin:0;">
+
+      <!-- Texto -->
+      <div class="col s12 l6 hero-content fade-up">
+        <div class="chip white-text" style="background:rgba(0,137,123,.85);font-weight:600;margin-bottom:1.2rem;">
+          <i class="material-icons tiny" style="vertical-align:middle;">verified</i>
+          Plataforma Educativa Institucional
+        </div>
+        <h1>La gestión escolar<br>más <em>inteligente</em></h1>
+        <p class="lead">
+          AulaVirtual centraliza la comunicación entre docentes, estudiantes y administradores.
+          Notas, horarios, asistencia y más, en un solo lugar.
+        </p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="registro.html"
+             class="btn-large waves-effect waves-light btn-av btn-pill fade-up d1">
+            <i class="material-icons left">rocket_launch</i>Crear cuenta
+          </a>
+          <a href="informacion.html"
+             class="btn-large waves-effect white-text btn-pill btn-outline fade-up d2"
+             style="border-color:rgba(255,255,255,.6)!important;color:#fff!important;">
+            <i class="material-icons left">info</i>Conocer más
+          </a>
+        </div>
+
+        <!-- Badges de roles -->
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:2.5rem;" class="fade-up d3">
+          <span class="role-badge role-student"><i class="material-icons tiny">school</i>Estudiantes</span>
+          <span class="role-badge role-teacher"><i class="material-icons tiny">cast_for_education</i>Docentes</span>
+          <span class="role-badge role-admin"  ><i class="material-icons tiny">admin_panel_settings</i>Administradores</span>
+        </div>
+      </div>
+
+      <!-- Panel visual -->
+      <div class="col l6 hide-on-med-and-down fade-up d2">
+        <div style="background:rgba(255,255,255,.1);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:2rem;color:#fff;">
+          <p style="font-weight:600;font-size:1.05rem;margin:0 0 1.2rem;">
+            <i class="material-icons tiny" style="vertical-align:middle;color:#80CBC4;">dashboard</i>
+            Panel de hoy — Jueves 19 Jun
+          </p>
+
+          <!-- Mini tarjetas -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.2rem;">
+            <div style="background:rgba(255,255,255,.12);border-radius:10px;padding:14px;">
+              <div style="font-size:1.6rem;font-weight:700;color:#80CBC4;">1,248</div>
+              <div style="font-size:.82rem;opacity:.8;">Estudiantes activos</div>
+            </div>
+            <div style="background:rgba(255,255,255,.12);border-radius:10px;padding:14px;">
+              <div style="font-size:1.6rem;font-weight:700;color:#80CBC4;">86</div>
+              <div style="font-size:.82rem;opacity:.8;">Docentes</div>
+            </div>
+            <div style="background:rgba(255,255,255,.12);border-radius:10px;padding:14px;">
+              <div style="font-size:1.6rem;font-weight:700;color:#80CBC4;">34</div>
+              <div style="font-size:.82rem;opacity:.8;">Materias hoy</div>
+            </div>
+            <div style="background:rgba(255,255,255,.12);border-radius:10px;padding:14px;">
+              <div style="font-size:1.6rem;font-weight:700;color:#FFCC80;">5</div>
+              <div style="font-size:.82rem;opacity:.8;">Eventos pendientes</div>
+            </div>
+          </div>
+
+          <!-- Progreso asistencia -->
+          <div style="margin-bottom:.8rem;">
+            <div class="progress-label white-text" style="opacity:.85;">
+              <span>Asistencia global hoy</span><span>91%</span>
+            </div>
+            <div class="progress av-progress">
+              <div class="determinate" style="width:91%;background:#80CBC4;"></div>
+            </div>
+          </div>
+          <div>
+            <div class="progress-label white-text" style="opacity:.85;">
+              <span>Entregas a tiempo</span><span>78%</span>
+            </div>
+            <div class="progress av-progress">
+              <div class="determinate" style="width:78%;background:#FFCC80;"></div>
+            </div>
+          </div>
+
+          <a href="login.html" class="btn waves-effect white blue-text darken-3 waves-light"
+             style="width:100%;margin-top:1.2rem;border-radius:8px;font-weight:600;">
+            Ir a mi panel <i class="material-icons right">arrow_forward</i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ESTADÍSTICAS ───────────────────────────────────────── -->
+<section class="av-stats">
+  <div class="container">
+    <div class="row" style="margin:0;">
+      <div class="col s6 m3 stat-box">
+        <span class="num" data-count="1248" data-suffix="">0</span>
+        <span class="lbl">Estudiantes matriculados</span>
+      </div>
+      <div class="col s6 m3 stat-box">
+        <span class="num" data-count="86" data-suffix="">0</span>
+        <span class="lbl">Docentes activos</span>
+      </div>
+      <div class="col s6 m3 stat-box">
+        <span class="num" data-count="120" data-suffix="">0</span>
+        <span class="lbl">Materias registradas</span>
+      </div>
+      <div class="col s6 m3 stat-box">
+        <span class="num" data-count="98" data-suffix="%">0%</span>
+        <span class="lbl">Satisfacción docente</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MÓDULOS DEL SISTEMA ────────────────────────────────── -->
+<section style="padding:72px 0;background:#fff;" id="modulos">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 center-align">
+        <div class="chip" style="background:#E8EAF6;color:#1A237E;font-weight:600;">Funcionalidades</div>
+        <h2 style="font-size:2.1rem;font-weight:700;color:#1A237E;margin:.5rem 0 .3rem;">Módulos del sistema</h2>
+        <p style="color:#757575;max-width:540px;margin:0 auto 3rem;">
+          Todo lo que una institución educativa necesita, integrado en una plataforma.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+
+      <!-- Módulo 1 -->
+      <div class="col s12 m6 l4">
+        <div class="card module-card hoverable z-depth-1" style="padding:1.8rem;">
+          <div class="module-card card-icon" style="background:#1A237E;">
+            <i class="material-icons">grade</i>
+          </div>
+          <h5 style="font-weight:700;color:#1A237E;margin:.4rem 0;">Gestión de Notas</h5>
+          <p style="color:#757575;font-size:.92rem;margin:0;">
+            Registro, consulta y exportación de calificaciones por período, materia y grupo. Cálculo automático de promedios.
+          </p>
+          <div style="margin-top:1rem;">
+            <span class="role-badge role-teacher" style="margin-right:5px;">Docente</span>
+            <span class="role-badge role-student">Estudiante</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Módulo 2 -->
+      <div class="col s12 m6 l4">
+        <div class="card module-card hoverable z-depth-1" style="padding:1.8rem;">
+          <div class="module-card card-icon" style="background:#00897B;">
+            <i class="material-icons">event_available</i>
+          </div>
+          <h5 style="font-weight:700;color:#00897B;margin:.4rem 0;">Control de Asistencia</h5>
+          <p style="color:#757575;font-size:.92rem;margin:0;">
+            Registro diario de asistencia por clase. Alertas automáticas a acudientes ante inasistencias. Reportes mensuales.
+          </p>
+          <div style="margin-top:1rem;">
+            <span class="role-badge role-teacher" style="margin-right:5px;">Docente</span>
+            <span class="role-badge role-admin">Admin</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Módulo 3 -->
+      <div class="col s12 m6 l4">
+        <div class="card module-card hoverable z-depth-1" style="padding:1.8rem;">
+          <div class="module-card card-icon" style="background:#6A1B9A;">
+            <i class="material-icons">calendar_month</i>
+          </div>
+          <h5 style="font-weight:700;color:#6A1B9A;margin:.4rem 0;">Horarios y Calendario</h5>
+          <p style="color:#757575;font-size:.92rem;margin:0;">
+            Generación y publicación de horarios de clase, exámenes y eventos institucionales. Vista semanal interactiva.
+          </p>
+          <div style="margin-top:1rem;">
+            <span class="role-badge role-admin" style="margin-right:5px;">Admin</span>
+            <span class="role-badge role-student">Estudiante</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Módulo 4 -->
+      <div class="col s12 m6 l4">
+        <div class="card module-card hoverable z-depth-1" style="padding:1.8rem;">
+          <div class="module-card card-icon" style="background:#1565C0;">
+            <i class="material-icons">assignment</i>
+          </div>
+          <h5 style="font-weight:700;color:#1565C0;margin:.4rem 0;">Tareas y Evaluaciones</h5>
+          <p style="color:#757575;font-size:.92rem;margin:0;">
+            Publicación de tareas con fecha límite, entrega digital, rúbricas de evaluación y retroalimentación en línea.
+          </p>
+          <div style="margin-top:1rem;">
+            <span class="role-badge role-teacher" style="margin-right:5px;">Docente</span>
+            <span class="role-badge role-student">Estudiante</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Módulo 5 -->
+      <div class="col s12 m6 l4">
+        <div class="card module-card hoverable z-depth-1" style="padding:1.8rem;">
+          <div class="module-card card-icon" style="background:#E65100;">
+            <i class="material-icons">forum</i>
+          </div>
+          <h5 style="font-weight:700;color:#E65100;margin:.4rem 0;">Comunicados y Foros</h5>
+          <p style="color:#757575;font-size:.92rem;margin:0;">
+            Envío de mensajes, circulares institucionales, foros por materia y chat entre usuarios de la plataforma.
+          </p>
+          <div style="margin-top:1rem;">
+            <span class="role-badge role-admin" style="margin-right:5px;">Admin</span>
+            <span class="role-badge role-teacher" style="margin-right:5px;">Docente</span>
+            <span class="role-badge role-student">Estudiante</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Módulo 6 -->
+      <div class="col s12 m6 l4">
+        <div class="card module-card hoverable z-depth-1" style="padding:1.8rem;">
+          <div class="module-card card-icon" style="background:#2E7D32;">
+            <i class="material-icons">bar_chart</i>
+          </div>
+          <h5 style="font-weight:700;color:#2E7D32;margin:.4rem 0;">Reportes y Estadísticas</h5>
+          <p style="color:#757575;font-size:.92rem;margin:0;">
+            Tableros de control con indicadores de desempeño académico, asistencia, rendimiento por grado y docente.
+          </p>
+          <div style="margin-top:1rem;">
+            <span class="role-badge role-admin">Admin</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── TIPOS DE USUARIO ───────────────────────────────────── -->
+<section style="padding:72px 0;background:#F5F6FA;" id="roles">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 center-align">
+        <h2 style="font-size:2.1rem;font-weight:700;color:#1A237E;">¿Quién eres en AulaVirtual?</h2>
+        <p style="color:#757575;max-width:520px;margin:.3rem auto 3rem;">
+          Tres perfiles diseñados para cubrir cada rol de la comunidad educativa
+        </p>
+      </div>
+    </div>
+    <div class="row">
+
+      <!-- Estudiante -->
+      <div class="col s12 m4">
+        <div class="card role-card z-depth-2">
+          <div class="role-card-header" style="background:linear-gradient(135deg,#1565C0,#42A5F5);">
+            <div class="role-avatar"><i class="material-icons">school</i></div>
+            <h5>Estudiante</h5>
+            <p>Tu espacio de aprendizaje personalizado</p>
+          </div>
+          <div class="card-content">
+            <ul style="list-style:none;padding:0;margin:0;">
+              <li style="padding:8px 0;border-bottom:1px solid #f5f5f5;display:flex;gap:10px;align-items:center;">
+                <i class="material-icons tiny teal-text">check_circle</i>
+                <span style="font-size:.92rem;">Ver y descargar horario</span>
+              </li>
+              <li style="padding:8px 0;border-bottom:1px solid #f5f5f5;display:flex;gap:10px;align-items:center;">
+                <i class="material-icons tiny teal-text">check_circle</i>
+                <span style="font-size:.92rem;">Consultar calificaciones</span>
+              </li>
+              <li style="padding:8px 0;border-bottom:1px solid #f5f5f5;display:flex;gap:10px;align-items:center;">
+                <i class="material-icons tiny teal-text">check_circle</i>
+                <span style="font-size:.92rem;">Entregar tareas digitalmente</span>
+              </li>
+              <li style="padding:8px 0;border-bottom:1px solid #f5f5f5;display:flex;gap:10px;align-items:center;">
+                <i class="material-icons tiny teal-text">check_circle</i>
+                <span style="font-size:.92rem;">Recibir comunicados</span>
+              </li>
+              <li style="padding:8px 0;display:flex;gap:10px;align-items:center;">
+                <i class="material-icons tiny teal-text">check_circle</i>
+                <span style="font-size:.92rem;">Participar en foros</span>
+              </li>
+            </ul>
+          </div>
+          <div class="card-action center-align" style="border-top:1px solid #f0f0f0;">
+            <a href="registro.html" class="btn waves-effect waves-light btn-av btn-pill">
+              Registrarme como estudiante
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Docente -->
+      <div class="col s12 m4">
+        <div class="card role-card z-depth-2">
+          <div class="role-card-header" style="background:linear-gradient(135deg,#2E7D32,#66BB6A);">
+            <div class="role-avatar"><i class="material-icons">cast_for_education</i></div>
+            <h5>Docente</h5>
+            <p>Gestiona tu aula de forma eficiente</p>
+          </div>
+          <div class="card-content">
+            <ul style="list-style:none;padding:0;margin:0;">
+              <li style="padding:8px 0;border-bottom:1px solid #f5f5f5;display:flex;gap:10px;align-items:center;">
+                <i class="material-icons tiny teal-text">check_circle</i>
+                <span style="font-size:.92rem;">Registrar asistencia diaria</span>
+              </li>
+              <li style="padding:8px 0;border-bottom:1px solid #f5f5f5;display:flex;gap:10px;align-items:center;">
+                <i class="material-icons tiny teal-text">check_circle</i>
+                <span style="font-size:.92rem;">Ingresar y publicar notas</span>
+              </li>
+              <li style="padding:8px 0;border-bottom:1px solid #f5f5f5;display:flex;gap:10px;align-items:center;">
+                <i class="material-icons tiny teal-text">check_circle</i>
+                <span style="font-size:.92rem;">Crear y calificar tareas</span>
+              </li>
+              <li style="padding:8px 0;border-bottom:1px solid #f5f5f5;display:flex;gap:10px;align-items:center;">
+                <i class="material-icons tiny teal-text">check_circle</i>
+                <span style="font-size:.92rem;">Publicar material de clase</span>
+              </li>
+              <li style="padding:8px 0;display:flex;gap:10px;align-items:center;">
+                <i class="material-icons tiny teal-text">check_circle</i>
+                <span style="font-size:.92rem;">Ver reportes de su grupo</span>
+              </li>
+            </ul>
+          </div>
+          <div class="card-action center-align" style="border-top:1px solid #f0f0f0;">
+            <a href="registro.html" class="btn waves-effect waves-light btn-pill"
+               style="background:#2E7D32;">
+              Registrarme como docente
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Administrador -->
+      <div class="col s12 m4">
+        <div class="card role-card z-depth-2">
+          <div class="role-card-header" style="background:linear-gradient(135deg,#6A1B9A,#AB47BC);">
+            <div class="role-avatar"><i class="material-icons">admin_panel_settings</i></div>
+            <h5>Administrador</h5>
+            <p>Control total de la institución</p>
+          </div>
+          <div class="card-content">
+            <ul style="list-style:none;padding:0;margin:0;">
+              <li style="padding:8px 0;border-bottom:1px solid #f5f5f5;display:flex;gap:10px;align-items:center;">
+                <i class="material-icons tiny teal-text">check_circle</i>
+                <span style="font-size:.92rem;">Gestionar usuarios y roles</span>
+              </li>
+              <li style="padding:8px 0;border-bottom:1px solid #f5f5f5;display:flex;gap:10px;align-items:center;">
+                <i class="material-icons tiny teal-text">check_circle</i>
+                <span style="font-size:.92rem;">Configurar horarios y grupos</span>
+              </li>
+              <li style="padding:8px 0;border-bottom:1px solid #f5f5f5;display:flex;gap:10px;align-items:center;">
+                <i class="material-icons tiny teal-text">check_circle</i>
+                <span style="font-size:.92rem;">Generar informes académicos</span>
+              </li>
+              <li style="padding:8px 0;border-bottom:1px solid #f5f5f5;display:flex;gap:10px;align-items:center;">
+                <i class="material-icons tiny teal-text">check_circle</i>
+                <span style="font-size:.92rem;">Enviar comunicados masivos</span>
+              </li>
+              <li style="padding:8px 0;display:flex;gap:10px;align-items:center;">
+                <i class="material-icons tiny teal-text">check_circle</i>
+                <span style="font-size:.92rem;">Ver analytics de la institución</span>
+              </li>
+            </ul>
+          </div>
+          <div class="card-action center-align" style="border-top:1px solid #f0f0f0;">
+            <a href="login.html" class="btn waves-effect waves-light btn-pill"
+               style="background:#6A1B9A;">
+              Acceso administrador
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA + CONTACTO ─────────────────────────────────────── -->
+<section style="background:linear-gradient(135deg,#0D1B6E,#1A237E);padding:5rem 0;text-align:center;" id="contacto">
+  <div class="container">
+    <i class="material-icons white-text" style="font-size:3.5rem;opacity:.4;">school</i>
+    <h2 class="white-text" style="font-size:2.1rem;font-weight:700;margin:.5rem 0;">
+      ¿Tu institución aún no usa AulaVirtual?
+    </h2>
+    <p class="white-text" style="opacity:.78;max-width:520px;margin:.8rem auto 2.5rem;font-size:1.05rem;">
+      Solicita una demostración gratuita y transforma la gestión académica de tu colegio o universidad.
+    </p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="registro.html" class="btn-large waves-effect waves-light btn-accent btn-pill">
+        <i class="material-icons left">rocket_launch</i>Solicitar demo
+      </a>
+      <a href="informacion.html" class="btn-large waves-effect white-text btn-pill"
+         style="border:2px solid rgba(255,255,255,.55);border-radius:99px;background:transparent;height:54px;line-height:54px;padding:0 2rem;font-weight:600;">
+        <i class="material-icons left">info</i>Conocer más
+      </a>
+    </div>
+    <div style="display:flex;justify-content:center;gap:3rem;margin-top:3rem;flex-wrap:wrap;">
+      <div class="white-text" style="text-align:center;">
+        <i class="material-icons" style="color:#80CBC4;font-size:1.8rem;">email</i>
+        <p style="margin:.3rem 0;opacity:.8;font-size:.9rem;">contacto@aulavirtual.edu.co</p>
+      </div>
+      <div class="white-text" style="text-align:center;">
+        <i class="material-icons" style="color:#80CBC4;font-size:1.8rem;">phone</i>
+        <p style="margin:.3rem 0;opacity:.8;font-size:.9rem;">+57 (1) 234-5678</p>
+      </div>
+      <div class="white-text" style="text-align:center;">
+        <i class="material-icons" style="color:#80CBC4;font-size:1.8rem;">location_on</i>
+        <p style="margin:.3rem 0;opacity:.8;font-size:.9rem;">Bogotá D.C., Colombia</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<footer class="av-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m4">
+        <h5><i class="material-icons" style="vertical-align:middle;font-size:1.3rem;">school</i> AulaVirtual</h5>
+        <p style="font-size:.9rem;line-height:1.7;">
+          Sistema de Gestión Escolar diseñado para instituciones educativas colombianas.
+          Conectamos toda la comunidad académica.
+        </p>
+        <div class="social-links" style="margin-top:1rem;">
+          <a href="#" aria-label="Facebook"><i class="material-icons tiny">facebook</i></a>
+          <a href="#" aria-label="Twitter"><i class="material-icons tiny">chat</i></a>
+          <a href="#" aria-label="Instagram"><i class="material-icons tiny">photo_camera</i></a>
+          <a href="#" aria-label="YouTube"><i class="material-icons tiny">smart_display</i></a>
+        </div>
+      </div>
+      <div class="col s6 m2">
+        <h5>Plataforma</h5>
+        <a href="index.html">Inicio</a>
+        <a href="informacion.html">La Institución</a>
+        <a href="registro.html">Registro</a>
+        <a href="login.html">Iniciar sesión</a>
+      </div>
+      <div class="col s6 m2">
+        <h5>Módulos</h5>
+        <a href="#">Gestión de Notas</a>
+        <a href="#">Asistencia</a>
+        <a href="#">Horarios</a>
+        <a href="#">Reportes</a>
+      </div>
+      <div class="col s12 m4">
+        <h5>Boletín institucional</h5>
+        <p style="font-size:.88rem;">Recibe novedades y actualizaciones del sistema.</p>
+        <div style="display:flex;gap:8px;margin-top:.8rem;">
+          <input type="email" placeholder="correo@institución.edu.co"
+                 style="border:none;border-bottom:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;flex:1;outline:none;padding:6px 0;font-size:.9rem;">
+          <button class="btn waves-effect btn-accent" style="height:40px;margin-top:8px;border-radius:8px;padding:0 1rem;">
+            <i class="material-icons" style="line-height:40px;">send</i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 AulaVirtual — Sistema de Gestión Escolar · GA5-220501095-AA1-EV04<br>Autor: Juan Alejandro Castañeda Muñoz
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>

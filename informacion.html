@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Juan Alejandro Castañeda Muñoz">
+  <title>La Institución | AulaVirtual</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    /* Imagen placeholder decorativa */
+    .inst-img {
+      border-radius: 12px;
+      overflow: hidden;
+      height: 260px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .inst-img .material-icons { font-size: 7rem; opacity: .25; }
+    .inst-img .img-tag {
+      position: absolute; top: 14px; right: 14px;
+      background: rgba(0,0,0,.5); color: #fff;
+      padding: 4px 12px; border-radius: 99px;
+      font-size: .78rem; font-weight: 600;
+    }
+    /* Galería decorativa */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .gallery-grid .g-item {
+      border-radius: 10px; overflow: hidden;
+      height: 140px; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: transform .28s, box-shadow .28s;
+      position: relative;
+    }
+    .gallery-grid .g-item:hover { transform: scale(1.03); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+    .gallery-grid .g-item:first-child { grid-column: span 2; height: 200px; }
+    .gallery-grid .g-item .material-icons { font-size: 4rem; opacity: .3; }
+    .gallery-grid .g-item .g-label {
+      position: absolute; bottom: 10px; left: 12px;
+      color: #fff; font-size: .82rem; font-weight: 600;
+      text-shadow: 0 1px 4px rgba(0,0,0,.6);
+    }
+    .img-overlay-full {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 60%);
+    }
+    /* Timeline */
+    .hito { display: flex; gap: 1.2rem; margin-bottom: 1.8rem; align-items: flex-start; }
+    .hito-year {
+      min-width: 60px; height: 60px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: .95rem; color: #fff; flex-shrink: 0;
+    }
+    /* Mapa visual */
+    .mapa-placeholder {
+      height: 260px; border-radius: 12px;
+      background: linear-gradient(135deg, #E8EAF6, #C5CAE9);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 10px; color: #5C6BC0;
+      border: 2px dashed #9FA8DA;
+    }
+  </style>
+</head>
+<body>
+
+<!-- SIDENAV -->
+<ul class="sidenav" id="side-nav">
+  <li><a href="index.html"       ><i class="material-icons">home</i>Inicio</a></li>
+  <li><a href="informacion.html" ><i class="material-icons">info</i>La Institución</a></li>
+  <li><a href="registro.html"    ><i class="material-icons">person_add</i>Registro</a></li>
+  <li><a href="login.html"       ><i class="material-icons">login</i>Iniciar sesión</a></li>
+</ul>
+
+<!-- NAVBAR -->
+<nav class="av-nav">
+  <div class="nav-wrapper container">
+    <a href="#" data-target="side-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <a href="index.html" class="brand-logo"><i class="material-icons">school</i> AulaVirtual</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="index.html">Inicio</a></li>
+      <li class="active"><a href="informacion.html">La Institución</a></li>
+      <li><a href="registro.html">Registro</a></li>
+      <li>
+        <a href="login.html" class="btn waves-effect waves-light btn-pill btn-accent"
+           style="margin-top:10px;">
+          <i class="material-icons left">login</i>Ingresar
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- BANNER DE PÁGINA -->
+<section class="page-banner">
+  <div class="container">
+    <nav aria-label="breadcrumb" style="margin-bottom:1rem;">
+      <a href="index.html" class="breadcrumb white-text" style="opacity:.7;">Inicio</a>
+      <a href="#" class="breadcrumb white-text" style="font-weight:600;">La Institución</a>
+    </nav>
+    <h1>Institución Educativa Técnica Nacional</h1>
+    <p>Formando líderes del mañana desde 1978 · Bogotá D.C., Colombia</p>
+    <div style="display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;">
+      <a href="registro.html" class="btn waves-effect waves-light btn-accent btn-pill">
+        <i class="material-icons left">person_add</i>Inscribirse
+      </a>
+      <a href="#galeria" class="btn waves-effect white-text btn-pill"
+         style="border:1.5px solid rgba(255,255,255,.5);background:transparent;font-weight:600;">
+        <i class="material-icons left">photo_library</i>Ver galería
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- RESUMEN + IMAGEN PRINCIPAL -->
+<section style="padding:64px 0;background:#fff;">
+  <div class="container">
+    <div class="row valign-wrapper">
+
+      <div class="col s12 m6 fade-up">
+        <div class="chip" style="background:#E8EAF6;color:#1A237E;font-weight:600;margin-bottom:1rem;">
+          Nuestra historia
+        </div>
+        <h2 style="font-size:1.9rem;font-weight:700;color:#1A237E;">
+          45 años transformando vidas a través de la educación
+        </h2>
+        <div style="width:48px;height:4px;background:#00897B;border-radius:99px;margin:.8rem 0 1.2rem;"></div>
+        <p style="color:#424242;line-height:1.8;font-size:.97rem;">
+          La Institución Educativa Técnica Nacional fue fundada en 1978 con la misión de ofrecer
+          educación de calidad a la comunidad bogotana. A lo largo de su historia ha formado a
+          más de 20,000 egresados en niveles de básica primaria, secundaria y educación media técnica.
+        </p>
+        <p style="color:#424242;line-height:1.8;font-size:.97rem;">
+          Hoy, con la implementación de <strong>AulaVirtual</strong>, la institución da un paso hacia
+          la transformación digital educativa, integrando tecnología de vanguardia para mejorar la
+          experiencia de aprendizaje de estudiantes, docentes y familias.
+        </p>
+
+        <!-- Mini KPIs -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:1.8rem;">
+          <div style="background:#E8EAF6;border-radius:10px;padding:16px;text-align:center;">
+            <div style="font-size:2rem;font-weight:700;color:#1A237E;">45+</div>
+            <div style="font-size:.85rem;color:#757575;">Años de historia</div>
+          </div>
+          <div style="background:#E0F2F1;border-radius:10px;padding:16px;text-align:center;">
+            <div style="font-size:2rem;font-weight:700;color:#00695C;">20k+</div>
+            <div style="font-size:.85rem;color:#757575;">Egresados</div>
+          </div>
+          <div style="background:#F3E5F5;border-radius:10px;padding:16px;text-align:center;">
+            <div style="font-size:2rem;font-weight:700;color:#6A1B9A;">86</div>
+            <div style="font-size:.85rem;color:#757575;">Docentes</div>
+          </div>
+          <div style="background:#FFF8E1;border-radius:10px;padding:16px;text-align:center;">
+            <div style="font-size:2rem;font-weight:700;color:#F57F17;">8</div>
+            <div style="font-size:.85rem;color:#757575;">Especialidades técnicas</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Imagen principal -->
+      <div class="col s12 m6 fade-up d2">
+        <div class="inst-img" style="background:linear-gradient(135deg,#1A237E,#3949AB);">
+          <i class="material-icons white-text">account_balance</i>
+          <div class="img-overlay-full"></div>
+          <div class="img-tag">📍 Sede principal · Bogotá</div>
+          <div style="position:absolute;bottom:14px;left:14px;color:#fff;">
+            <div style="font-weight:700;font-size:1rem;">Bloque administrativo</div>
+            <div style="font-size:.82rem;opacity:.8;">Calle 45 # 23-18 · Chapinero</div>
+          </div>
+        </div>
+        <div class="row" style="margin-top:12px;">
+          <div class="col s6">
+            <div class="inst-img" style="background:linear-gradient(135deg,#00695C,#26A69A);height:140px;">
+              <i class="material-icons white-text">science</i>
+              <div class="img-overlay-full"></div>
+              <div style="position:absolute;bottom:10px;left:10px;color:#fff;font-size:.82rem;font-weight:600;">
+                Laboratorio de ciencias
+              </div>
+            </div>
+          </div>
+          <div class="col s6">
+            <div class="inst-img" style="background:linear-gradient(135deg,#4A148C,#8E24AA);height:140px;">
+              <i class="material-icons white-text">computer</i>
+              <div class="img-overlay-full"></div>
+              <div style="position:absolute;bottom:10px;left:10px;color:#fff;font-size:.82rem;font-weight:600;">
+                Sala de sistemas
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MISIÓN, VISIÓN Y VALORES -->
+<section style="padding:64px 0;background:#F5F6FA;">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 center-align">
+        <h2 style="font-size:2rem;font-weight:700;color:#1A237E;">Identidad Institucional</h2>
+        <div style="width:48px;height:4px;background:#00897B;border-radius:99px;margin:.5rem auto 3rem;"></div>
+      </div>
+    </div>
+
+    <!-- Tabs Materialize -->
+    <div class="row">
+      <div class="col s12">
+        <ul class="tabs" style="background:transparent;">
+          <li class="tab col s4"><a href="#mision" class="active" style="color:#1A237E;">Misión</a></li>
+          <li class="tab col s4"><a href="#vision"  style="color:#1A237E;">Visión</a></li>
+          <li class="tab col s4"><a href="#valores" style="color:#1A237E;">Valores</a></li>
+        </ul>
+      </div>
+
+      <div id="mision" class="col s12" style="padding:2rem 0;">
+        <div class="card z-depth-1" style="border-radius:14px;padding:2rem;border-left:5px solid #1A237E;">
+          <div style="display:flex;align-items:flex-start;gap:1.2rem;">
+            <div style="width:52px;height:52px;background:#E8EAF6;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i class="material-icons" style="color:#1A237E;font-size:1.6rem;">flag</i>
+            </div>
+            <div>
+              <h4 style="font-weight:700;color:#1A237E;margin:0 0 .8rem;">Nuestra Misión</h4>
+              <p style="color:#424242;line-height:1.9;font-size:.97rem;margin:0;">
+                Formar ciudadanos íntegros, críticos y competentes, capaces de transformar su entorno
+                mediante una educación de calidad que integra los saberes académicos, técnicos y
+                humanísticos. Nos comprometemos con el desarrollo integral de la persona, fomentando
+                la equidad, la inclusión y el respeto por la diversidad cultural y social de Colombia.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="vision" class="col s12" style="padding:2rem 0;">
+        <div class="card z-depth-1" style="border-radius:14px;padding:2rem;border-left:5px solid #00897B;">
+          <div style="display:flex;align-items:flex-start;gap:1.2rem;">
+            <div style="width:52px;height:52px;background:#E0F2F1;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i class="material-icons" style="color:#00695C;font-size:1.6rem;">visibility</i>
+            </div>
+            <div>
+              <h4 style="font-weight:700;color:#00695C;margin:0 0 .8rem;">Nuestra Visión</h4>
+              <p style="color:#424242;line-height:1.9;font-size:.97rem;margin:0;">
+                Para el año 2030, ser reconocida como la institución educativa técnica más innovadora
+                del distrito, líder en la integración de tecnología y pedagogía activa. Buscamos
+                consolidar alianzas con el sector productivo para garantizar la empleabilidad de
+                nuestros egresados y proyectarlos en el ámbito nacional e internacional.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="valores" class="col s12" style="padding:2rem 0;">
+        <div class="row">
+          <div class="col s12 m6 l4">
+            <div class="card z-depth-1" style="border-radius:12px;padding:1.5rem;text-align:center;border-top:4px solid #1A237E;">
+              <i class="material-icons" style="color:#1A237E;font-size:2.4rem;">balance</i>
+              <h6 style="font-weight:700;color:#1A237E;">Honestidad</h6>
+              <p style="color:#757575;font-size:.87rem;margin:0;">Actuamos con transparencia e integridad en todos nuestros procesos.</p>
+            </div>
+          </div>
+          <div class="col s12 m6 l4">
+            <div class="card z-depth-1" style="border-radius:12px;padding:1.5rem;text-align:center;border-top:4px solid #00897B;">
+              <i class="material-icons" style="color:#00897B;font-size:2.4rem;">diversity_3</i>
+              <h6 style="font-weight:700;color:#00897B;">Inclusión</h6>
+              <p style="color:#757575;font-size:.87rem;margin:0;">Valoramos y respetamos cada diferencia como riqueza de nuestra comunidad.</p>
+            </div>
+          </div>
+          <div class="col s12 m6 l4">
+            <div class="card z-depth-1" style="border-radius:12px;padding:1.5rem;text-align:center;border-top:4px solid #6A1B9A;">
+              <i class="material-icons" style="color:#6A1B9A;font-size:2.4rem;">psychology</i>
+              <h6 style="font-weight:700;color:#6A1B9A;">Innovación</h6>
+              <p style="color:#757575;font-size:.87rem;margin:0;">Adoptamos herramientas y metodologías que mejoran el aprendizaje.</p>
+            </div>
+          </div>
+          <div class="col s12 m6 l4">
+            <div class="card z-depth-1" style="border-radius:12px;padding:1.5rem;text-align:center;border-top:4px solid #E65100;">
+              <i class="material-icons" style="color:#E65100;font-size:2.4rem;">volunteer_activism</i>
+              <h6 style="font-weight:700;color:#E65100;">Responsabilidad</h6>
+              <p style="color:#757575;font-size:.87rem;margin:0;">Asumimos con compromiso nuestros deberes académicos y sociales.</p>
+            </div>
+          </div>
+          <div class="col s12 m6 l4">
+            <div class="card z-depth-1" style="border-radius:12px;padding:1.5rem;text-align:center;border-top:4px solid #1565C0;">
+              <i class="material-icons" style="color:#1565C0;font-size:2.4rem;">handshake</i>
+              <h6 style="font-weight:700;color:#1565C0;">Respeto</h6>
+              <p style="color:#757575;font-size:.87rem;margin:0;">Fomentamos un ambiente de convivencia sana y pacífica.</p>
+            </div>
+          </div>
+          <div class="col s12 m6 l4">
+            <div class="card z-depth-1" style="border-radius:12px;padding:1.5rem;text-align:center;border-top:4px solid #2E7D32;">
+              <i class="material-icons" style="color:#2E7D32;font-size:2.4rem;">eco</i>
+              <h6 style="font-weight:700;color:#2E7D32;">Sostenibilidad</h6>
+              <p style="color:#757575;font-size:.87rem;margin:0;">Educamos para el cuidado del ambiente y las generaciones futuras.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA DE IMÁGENES -->
+<section style="padding:64px 0;background:#fff;" id="galeria">
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <h2 style="font-size:2rem;font-weight:700;color:#1A237E;">Nuestra Sede</h2>
+        <div style="width:48px;height:4px;background:#00897B;border-radius:99px;margin:.5rem 0 1rem;"></div>
+        <p style="color:#757575;margin-bottom:2rem;">
+          Espacios diseñados para el aprendizaje activo y la convivencia escolar
+        </p>
+
+        <!-- Filtros -->
+        <div style="margin-bottom:1.8rem;">
+          <span class="filter-chip active" data-filter="all">Todos</span>
+          <span class="filter-chip" data-filter="academico">Académico</span>
+          <span class="filter-chip" data-filter="deportivo">Deportivo</span>
+          <span class="filter-chip" data-filter="cultural">Cultural</span>
+          <span class="filter-chip" data-filter="tecnologia">Tecnología</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" id="gallery-container">
+
+      <!-- Imagen 1 — grande -->
+      <div class="col s12 m8 fade-up" data-cat="academico">
+        <div class="card gallery-card z-depth-2 hoverable">
+          <div class="gallery-card img-placeholder" style="height:280px;background:linear-gradient(135deg,#1A237E,#3949AB);">
+            <i class="material-icons white-text">account_balance</i>
+            <div class="img-overlay"></div>
+            <div class="img-label">
+              Edificio principal
+              <small>Bloque administrativo y aulas de grado 10° y 11°</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Imagen 2 -->
+      <div class="col s12 m4 fade-up d1" data-cat="tecnologia">
+        <div class="card gallery-card z-depth-2 hoverable">
+          <div class="gallery-card img-placeholder" style="height:280px;background:linear-gradient(135deg,#4A148C,#7B1FA2);">
+            <i class="material-icons white-text">computer</i>
+            <div class="img-overlay"></div>
+            <div class="img-label">
+              Sala de Sistemas
+              <small>40 equipos · Fibra óptica 300 Mbps</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Imagen 3 -->
+      <div class="col s12 m4 fade-up d1" data-cat="academico">
+        <div class="card gallery-card z-depth-2 hoverable">
+          <div class="gallery-card img-placeholder" style="background:linear-gradient(135deg,#00695C,#00897B);">
+            <i class="material-icons white-text">science</i>
+            <div class="img-overlay"></div>
+            <div class="img-label">
+              Laboratorio de Ciencias
+              <small>Biología, Química y Física</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Imagen 4 -->
+      <div class="col s12 m4 fade-up d2" data-cat="deportivo">
+        <div class="card gallery-card z-depth-2 hoverable">
+          <div class="gallery-card img-placeholder" style="background:linear-gradient(135deg,#E65100,#FF8F00);">
+            <i class="material-icons white-text">sports_soccer</i>
+            <div class="img-overlay"></div>
+            <div class="img-label">
+              Cancha polideportiva
+              <small>Fútbol, baloncesto y voleibol</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Imagen 5 -->
+      <div class="col s12 m4 fade-up d3" data-cat="cultural">
+        <div class="card gallery-card z-depth-2 hoverable">
+          <div class="gallery-card img-placeholder" style="background:linear-gradient(135deg,#AD1457,#F06292);">
+            <i class="material-icons white-text">theater_comedy</i>
+            <div class="img-overlay"></div>
+            <div class="img-label">
+              Auditorio institucional
+              <small>Capacidad 350 personas</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Imagen 6 -->
+      <div class="col s12 m4 fade-up d2" data-cat="academico">
+        <div class="card gallery-card z-depth-2 hoverable">
+          <div class="gallery-card img-placeholder" style="background:linear-gradient(135deg,#1565C0,#42A5F5);">
+            <i class="material-icons white-text">menu_book</i>
+            <div class="img-overlay"></div>
+            <div class="img-label">
+              Biblioteca escolar
+              <small>+8,000 títulos físicos y digitales</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Imagen 7 -->
+      <div class="col s12 m4 fade-up d3" data-cat="tecnologia">
+        <div class="card gallery-card z-depth-2 hoverable">
+          <div class="gallery-card img-placeholder" style="background:linear-gradient(135deg,#2E7D32,#66BB6A);">
+            <i class="material-icons white-text">biotech</i>
+            <div class="img-overlay"></div>
+            <div class="img-label">
+              Taller técnico
+              <small>Electrónica y mecatrónica</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Imagen 8 -->
+      <div class="col s12 m8 fade-up d2" data-cat="cultural">
+        <div class="card gallery-card z-depth-2 hoverable">
+          <div class="gallery-card img-placeholder" style="height:180px;background:linear-gradient(135deg,#006064,#00BCD4);">
+            <i class="material-icons white-text">restaurant</i>
+            <div class="img-overlay"></div>
+            <div class="img-label">
+              Cafetería y zonas de descanso
+              <small>Atendemos +1,200 estudiantes diariamente</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- fin galería -->
+  </div>
+</section>
+
+<!-- HITOS HISTÓRICOS -->
+<section style="padding:64px 0;background:#F5F6FA;">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m6">
+        <h2 style="font-size:1.9rem;font-weight:700;color:#1A237E;">Historia y logros</h2>
+        <div style="width:48px;height:4px;background:#00897B;border-radius:99px;margin:.5rem 0 2rem;"></div>
+
+        <div class="hito">
+          <div class="hito-year" style="background:#1A237E;">1978</div>
+          <div>
+            <h6 style="font-weight:700;margin:0 0 .3rem;color:#1A237E;">Fundación de la institución</h6>
+            <p style="color:#757575;margin:0;font-size:.9rem;">Con 120 estudiantes y 8 docentes, inicia labores en el barrio Chapinero.</p>
+          </div>
+        </div>
+        <div class="hito">
+          <div class="hito-year" style="background:#00697B;">1995</div>
+          <div>
+            <h6 style="font-weight:700;margin:0 0 .3rem;color:#00697B;">Acreditación técnica</h6>
+            <p style="color:#757575;margin:0;font-size:.9rem;">El MEN otorga la acreditación en educación media técnica con énfasis en informática.</p>
+          </div>
+        </div>
+        <div class="hito">
+          <div class="hito-year" style="background:#6A1B9A;">2008</div>
+          <div>
+            <h6 style="font-weight:700;margin:0 0 .3rem;color:#6A1B9A;">Premio Galardón a la Excelencia</h6>
+            <p style="color:#757575;margin:0;font-size:.9rem;">Reconocimiento de la SED Bogotá por desempeño ICFES superior durante 5 años consecutivos.</p>
+          </div>
+        </div>
+        <div class="hito">
+          <div class="hito-year" style="background:#E65100;">2018</div>
+          <div>
+            <h6 style="font-weight:700;margin:0 0 .3rem;color:#E65100;">Programa bilingüe</h6>
+            <p style="color:#757575;margin:0;font-size:.9rem;">Implementación del programa de inglés intensivo en todos los grados.</p>
+          </div>
+        </div>
+        <div class="hito">
+          <div class="hito-year" style="background:#2E7D32;">2025</div>
+          <div>
+            <h6 style="font-weight:700;margin:0 0 .3rem;color:#2E7D32;">AulaVirtual</h6>
+            <p style="color:#757575;margin:0;font-size:.9rem;">Lanzamiento del sistema de gestión escolar digital para transformar la experiencia educativa.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Horario de atención + mapa -->
+      <div class="col s12 m6">
+        <h4 style="font-weight:700;color:#1A237E;margin-bottom:1.2rem;">Información de contacto</h4>
+
+        <div class="card z-depth-1" style="border-radius:12px;overflow:hidden;">
+          <div class="card-content">
+            <table class="av-table" style="box-shadow:none;">
+              <thead>
+                <tr><th colspan="2">Horario de atención</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><b>Lunes a Viernes</b></td><td>6:30 a.m. – 5:00 p.m.</td></tr>
+                <tr><td><b>Jornada mañana</b></td><td>6:30 a.m. – 12:30 p.m.</td></tr>
+                <tr><td><b>Jornada tarde</b></td><td>12:30 p.m. – 5:00 p.m.</td></tr>
+                <tr><td><b>Secretaría</b></td><td>7:00 a.m. – 4:00 p.m.</td></tr>
+                <tr><td><b>Sábados</b></td><td>8:00 a.m. – 12:00 m. (refuerzo)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Mapa placeholder -->
+        <div class="mapa-placeholder" style="margin-top:1rem;">
+          <i class="material-icons" style="font-size:3.5rem;color:#9FA8DA;">location_on</i>
+          <div style="text-align:center;">
+            <p style="font-weight:700;margin:0;color:#5C6BC0;">Calle 45 # 23-18, Chapinero</p>
+            <p style="margin:.3rem 0 0;font-size:.85rem;color:#7986CB;">Bogotá D.C., Colombia</p>
+          </div>
+          <a href="#" class="btn waves-effect waves-light btn-av btn-pill" style="font-size:.85rem;height:38px;line-height:38px;padding:0 1.5rem;">
+            <i class="material-icons left tiny">open_in_new</i>Abrir en Google Maps
+          </a>
+        </div>
+
+        <!-- Info rápida -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:1rem;">
+          <div style="background:#E8EAF6;border-radius:10px;padding:12px;display:flex;gap:10px;align-items:center;">
+            <i class="material-icons" style="color:#1A237E;">email</i>
+            <div>
+              <div style="font-size:.72rem;color:#9E9E9E;font-weight:600;">CORREO</div>
+              <div style="font-size:.82rem;font-weight:600;">info@ietecnacional.edu.co</div>
+            </div>
+          </div>
+          <div style="background:#E0F2F1;border-radius:10px;padding:12px;display:flex;gap:10px;align-items:center;">
+            <i class="material-icons" style="color:#00695C;">phone</i>
+            <div>
+              <div style="font-size:.72rem;color:#9E9E9E;font-weight:600;">TELÉFONO</div>
+              <div style="font-size:.82rem;font-weight:600;">(1) 234-5678</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:linear-gradient(135deg,#0D1B6E,#1A237E);padding:4rem 0;text-align:center;">
+  <div class="container">
+    <h2 class="white-text" style="font-weight:700;margin-bottom:.8rem;">
+      Forma parte de nuestra comunidad educativa
+    </h2>
+    <p class="white-text" style="opacity:.78;max-width:480px;margin:0 auto 2rem;">
+      Regístrate en AulaVirtual y accede a todos los servicios digitales de la institución.
+    </p>
+    <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+      <a href="registro.html" class="btn-large waves-effect waves-light btn-accent btn-pill">
+        <i class="material-icons left">person_add</i>Registrarme
+      </a>
+      <a href="login.html" class="btn-large waves-effect white-text btn-pill"
+         style="border:2px solid rgba(255,255,255,.5);background:transparent;height:54px;line-height:54px;padding:0 2rem;font-weight:600;">
+        <i class="material-icons left">login</i>Ya tengo cuenta
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="av-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m4">
+        <h5><i class="material-icons" style="vertical-align:middle;font-size:1.3rem;">school</i> AulaVirtual</h5>
+        <p style="font-size:.88rem;line-height:1.7;">Sistema de Gestión Escolar · I.E. Técnica Nacional · Bogotá</p>
+      </div>
+      <div class="col s6 m2">
+        <h5>Navegar</h5>
+        <a href="index.html">Inicio</a>
+        <a href="informacion.html">La Institución</a>
+        <a href="registro.html">Registro</a>
+        <a href="login.html">Iniciar sesión</a>
+      </div>
+      <div class="col s6 m2">
+        <h5>Módulos</h5>
+        <a href="#">Notas</a>
+        <a href="#">Asistencia</a>
+        <a href="#">Horarios</a>
+        <a href="#">Comunicados</a>
+      </div>
+      <div class="col s12 m4">
+        <h5>Contáctanos</h5>
+        <p style="font-size:.88rem;">📍 Calle 45 # 23-18, Chapinero, Bogotá</p>
+        <p style="font-size:.88rem;">📞 (1) 234-5678</p>
+        <p style="font-size:.88rem;">✉️ info@ietecnacional.edu.co</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 AulaVirtual · GA5-220501095-AA1-EV04<br>Autor: Juan Alejandro Castañeda Muñoz</div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>

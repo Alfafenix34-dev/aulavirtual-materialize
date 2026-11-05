@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Juan Alejandro Castañeda Muñoz">
+  <title>Iniciar Sesión | AulaVirtual</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    body { margin: 0; }
+
+    /* Anillos decorativos animados */
+    @keyframes pulse-ring {
+      0%   { transform: scale(1);   opacity: .5; }
+      100% { transform: scale(1.9); opacity: 0;  }
+    }
+    .ring {
+      position: absolute; border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,.25);
+      animation: pulse-ring 4s ease-out infinite;
+    }
+
+    /* Notificación flotante */
+    .floating-notif {
+      position: absolute;
+      background: #fff; border-radius: 12px;
+      padding: 12px 16px;
+      box-shadow: 0 8px 28px rgba(0,0,0,.22);
+      display: flex; align-items: center; gap: 12px;
+      min-width: 220px;
+    }
+    .notif-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+    /* Barra de notificación arriba */
+    .top-bar {
+      background: #00695C; color: #fff;
+      text-align: center; padding: 8px;
+      font-size: .82rem; font-weight: 500;
+    }
+
+    /* OTP inputs */
+    .otp-box {
+      width: 46px; height: 54px;
+      border: 2px solid #C5CAE9; border-radius: 10px;
+      text-align: center; font-size: 1.4rem; font-weight: 700;
+      color: #1A237E; outline: none;
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .otp-box:focus {
+      border-color: #1A237E;
+      box-shadow: 0 0 0 3px rgba(26,35,126,.18);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Barra superior de aviso -->
+<div class="top-bar">
+  <i class="material-icons tiny" style="vertical-align:middle;">info</i>
+  Acceso exclusivo para miembros de la comunidad educativa institucional
+</div>
+
+<!-- LOGIN PAGE -->
+<div class="login-page">
+  <div style="width:100%;max-width:940px;padding:0 1rem;">
+    <div class="card login-card">
+
+      <!-- PANEL IZQUIERDO VISUAL -->
+      <div class="login-left" style="position:relative;overflow:hidden;">
+        <!-- Anillos decorativos -->
+        <div class="ring" style="width:180px;height:180px;top:-60px;right:-60px;"></div>
+        <div class="ring" style="width:140px;height:140px;bottom:-50px;left:-50px;animation-delay:2s;"></div>
+
+        <!-- Logo -->
+        <div style="width:68px;height:68px;background:rgba(255,255,255,.15);border-radius:18px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;border:2px solid rgba(255,255,255,.25);">
+          <i class="material-icons white-text" style="font-size:2.4rem;">school</i>
+        </div>
+
+        <h3 style="font-weight:700;margin:0 0 .4rem;">AulaVirtual</h3>
+        <p style="font-size:.82rem;opacity:.7;margin:0 0 .6rem;text-transform:uppercase;letter-spacing:.06em;">
+          Sistema de Gestión Escolar
+        </p>
+        <p style="opacity:.78;font-size:.95rem;margin:0 0 2rem;line-height:1.7;">
+          I.E. Técnica Nacional · Bogotá D.C.
+        </p>
+
+        <!-- Lista de módulos disponibles -->
+        <div style="margin-bottom:2rem;">
+          <p style="font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;opacity:.6;margin:0 0 .8rem;font-weight:600;">
+            Módulos disponibles
+          </p>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:center;gap:10px;font-size:.9rem;">
+              <i class="material-icons" style="color:#80CBC4;font-size:1.1rem;">grade</i>
+              <span>Registro de notas y boletines</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:.9rem;">
+              <i class="material-icons" style="color:#80CBC4;font-size:1.1rem;">event_available</i>
+              <span>Control de asistencia</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:.9rem;">
+              <i class="material-icons" style="color:#80CBC4;font-size:1.1rem;">calendar_month</i>
+              <span>Horarios y calendario académico</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:.9rem;">
+              <i class="material-icons" style="color:#80CBC4;font-size:1.1rem;">assignment</i>
+              <span>Tareas y evaluaciones</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:.9rem;">
+              <i class="material-icons" style="color:#80CBC4;font-size:1.1rem;">forum</i>
+              <span>Comunicados y foros</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:.9rem;">
+              <i class="material-icons" style="color:#80CBC4;font-size:1.1rem;">bar_chart</i>
+              <span>Reportes y estadísticas</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notificación flotante -->
+        <div class="floating-notif" style="bottom:28px;right:-16px;">
+          <div style="width:38px;height:38px;border-radius:10px;background:#E8F5E9;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i class="material-icons" style="color:#2E7D32;font-size:1.2rem;">notifications_active</i>
+          </div>
+          <div>
+            <div style="font-size:.78rem;color:#9E9E9E;font-weight:600;">NUEVO</div>
+            <div style="font-size:.85rem;font-weight:600;color:#212121;">3 tareas pendientes hoy</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORMULARIO DERECHO -->
+      <div class="login-right">
+
+        <div style="margin-bottom:1.8rem;">
+          <h2 style="margin:0 0 .3rem;">Bienvenido/a</h2>
+          <p style="color:#757575;margin:0;font-size:.92rem;">
+            Ingresa con tus credenciales institucionales
+          </p>
+        </div>
+
+        <!-- SELECCIÓN DE ROL -->
+        <p style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#9E9E9E;margin-bottom:.8rem;">
+          Soy...
+        </p>
+        <input type="hidden" id="selected-role" value="estudiante">
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:1.4rem;">
+
+          <button class="role-selector-btn selected" data-role="estudiante" type="button">
+            <div class="rs-icon" style="background:#E3F2FD;">
+              <i class="material-icons" style="color:#1565C0;font-size:1.3rem;">school</i>
+            </div>
+            <div>
+              <div style="font-weight:600;font-size:.9rem;color:#212121;">Estudiante</div>
+              <div style="font-size:.78rem;color:#9E9E9E;">Notas, tareas, horario y más</div>
+            </div>
+            <i class="material-icons" style="margin-left:auto;color:#9E9E9E;font-size:1.1rem;">arrow_forward_ios</i>
+          </button>
+
+          <button class="role-selector-btn" data-role="docente" type="button">
+            <div class="rs-icon" style="background:#E8F5E9;">
+              <i class="material-icons" style="color:#2E7D32;font-size:1.3rem;">cast_for_education</i>
+            </div>
+            <div>
+              <div style="font-weight:600;font-size:.9rem;color:#212121;">Docente</div>
+              <div style="font-size:.78rem;color:#9E9E9E;">Asistencia, calificaciones, grupos</div>
+            </div>
+            <i class="material-icons" style="margin-left:auto;color:#9E9E9E;font-size:1.1rem;">arrow_forward_ios</i>
+          </button>
+
+          <button class="role-selector-btn" data-role="admin" type="button">
+            <div class="rs-icon" style="background:#F3E5F5;">
+              <i class="material-icons" style="color:#6A1B9A;font-size:1.3rem;">admin_panel_settings</i>
+            </div>
+            <div>
+              <div style="font-weight:600;font-size:.9rem;color:#212121;">Administrador</div>
+              <div style="font-size:.78rem;color:#9E9E9E;">Gestión total de la institución</div>
+            </div>
+            <i class="material-icons" style="margin-left:auto;color:#9E9E9E;font-size:1.1rem;">arrow_forward_ios</i>
+          </button>
+
+        </div>
+
+        <!-- Hint del rol seleccionado -->
+        <div id="role-hint-box" class="card-panel" style="background:#E8EAF6;padding:.7rem 1rem;border-radius:8px;margin-bottom:1.2rem;">
+          <p style="margin:0;font-size:.85rem;color:#1A237E;" id="role-hint">
+            📚 Accede a tus clases, tareas y calificaciones.
+          </p>
+        </div>
+
+        <!-- FORMULARIO LOGIN -->
+        <form id="form-login" novalidate>
+
+          <div class="input-field">
+            <i class="material-icons prefix" style="color:#1A237E;">email</i>
+            <input id="login-email" type="email" class="validate" required>
+            <label for="login-email">Correo institucional</label>
+            <span class="helper-text" data-error="Correo inválido"></span>
+          </div>
+
+          <div class="input-field" style="position:relative;">
+            <i class="material-icons prefix" style="color:#1A237E;">lock</i>
+            <input id="login-password" type="password" class="validate" required>
+            <label for="login-password">Contraseña</label>
+            <i class="material-icons pw-toggle suffix"
+               data-target="login-password"
+               style="position:absolute;right:0;top:10px;cursor:pointer;color:#9E9E9E;">
+              visibility
+            </i>
+          </div>
+
+          <!-- Recordar + Olvidé -->
+          <div style="display:flex;justify-content:space-between;align-items:center;margin:.4rem 0 1.5rem;">
+            <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+              <input type="checkbox" class="filled-in" id="remember">
+              <span style="font-size:.88rem;color:#424242;">Recordarme</span>
+            </label>
+            <a href="#modal-forgot" class="modal-trigger" style="color:#1A237E;font-size:.88rem;font-weight:600;">
+              ¿Olvidaste tu contraseña?
+            </a>
+          </div>
+
+          <!-- Botón ingresar -->
+          <button type="submit" id="btn-login" class="btn-large waves-effect waves-light btn-av btn-av-full">
+            <i class="material-icons left">login</i>
+            Ingresar a AulaVirtual
+          </button>
+
+        </form>
+
+        <!-- Divider -->
+        <div class="form-divider" style="margin:1.4rem 0;">o accede con</div>
+
+        <!-- Botones sociales -->
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:1.4rem;">
+          <a href="#" class="btn waves-effect social-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            Ingresar con Google Workspace
+          </a>
+          <a href="#" class="btn waves-effect social-btn">
+            <svg width="18" height="18" viewBox="0 0 23 23" fill="none">
+              <path d="M11 11H0v11h11V11zM23 11H12v11h11V11zM11 0H0v11h11V0zM23 0H12v11h11V0z" fill="#00A4EF"/>
+            </svg>
+            Ingresar con Microsoft 365
+          </a>
+        </div>
+
+        <!-- Registro -->
+        <p style="text-align:center;color:#757575;font-size:.88rem;margin:0;">
+          ¿No tienes cuenta?
+          <a href="registro.html" style="color:#1A237E;font-weight:700;">Registrarse →</a>
+          &nbsp;|&nbsp;
+          <a href="informacion.html" style="color:#1A237E;">Conocer la institución</a>
+        </p>
+
+      </div><!-- fin login-right -->
+    </div><!-- fin login-card -->
+  </div>
+</div>
+
+<!-- MODAL: Recuperar contraseña -->
+<div id="modal-forgot" class="modal" style="max-width:480px;border-radius:16px;overflow:hidden;">
+  <div class="modal-content" style="padding:0;">
+
+    <!-- Header modal -->
+    <div style="background:linear-gradient(135deg,#1A237E,#283593);padding:2rem;text-align:center;color:#fff;">
+      <div style="width:60px;height:60px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
+        <i class="material-icons" style="font-size:2rem;">lock_reset</i>
+      </div>
+      <h5 style="font-weight:700;margin:0;">Recuperar contraseña</h5>
+      <p style="opacity:.78;font-size:.88rem;margin:.3rem 0 0;">Te enviaremos un código de 6 dígitos</p>
+    </div>
+
+    <div style="padding:1.8rem;">
+
+      <!-- Paso 1: Email -->
+      <div id="step-email">
+        <div class="input-field">
+          <i class="material-icons prefix" style="color:#1A237E;">email</i>
+          <input id="forgot-email" type="email" class="validate">
+          <label for="forgot-email">Correo institucional registrado</label>
+        </div>
+
+        <!-- Botones de acción -->
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:1rem;">
+          <button class="btn waves-effect waves-light btn-av btn-av-full"
+                  onclick="showStep('otp')">
+            <i class="material-icons left">send</i>Enviar código de verificación
+          </button>
+          <button class="btn waves-effect btn-flat btn-pill"
+                  style="border:1.5px solid #1A237E;color:#1A237E;height:46px;line-height:46px;"
+                  onclick="showStep('phone')">
+            <i class="material-icons left">sms</i>Enviar por SMS
+          </button>
+        </div>
+      </div>
+
+      <!-- Paso 2: OTP -->
+      <div id="step-otp" style="display:none;">
+        <p style="text-align:center;color:#424242;margin-bottom:.5rem;font-size:.92rem;">
+          Código enviado a <strong id="masked-email-show">***@***.edu.co</strong>
+        </p>
+        <p style="text-align:center;color:#9E9E9E;font-size:.82rem;margin-bottom:1.5rem;">
+          El código expira en <strong id="countdown" style="color:#C62828;">05:00</strong>
+        </p>
+        <div style="display:flex;justify-content:center;gap:8px;margin-bottom:1.5rem;">
+          <input type="text" maxlength="1" class="otp-box" oninput="nextOtp(this,1)">
+          <input type="text" maxlength="1" class="otp-box" oninput="nextOtp(this,2)">
+          <input type="text" maxlength="1" class="otp-box" oninput="nextOtp(this,3)">
+          <input type="text" maxlength="1" class="otp-box" oninput="nextOtp(this,4)">
+          <input type="text" maxlength="1" class="otp-box" oninput="nextOtp(this,5)">
+          <input type="text" maxlength="1" class="otp-box" oninput="nextOtp(this,6)">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <button class="btn waves-effect waves-light btn-av btn-av-full"
+                  onclick="showStep('new-pass')">
+            <i class="material-icons left">verified</i>Verificar código
+          </button>
+          <button class="btn waves-effect btn-flat" style="color:#757575;"
+                  onclick="showStep('email')">
+            ← Volver / Reenviar código
+          </button>
+        </div>
+      </div>
+
+      <!-- Paso 2 alt: SMS -->
+      <div id="step-phone" style="display:none;">
+        <div class="input-field">
+          <i class="material-icons prefix" style="color:#1A237E;">phone</i>
+          <input id="phone-recovery" type="tel">
+          <label for="phone-recovery">Número de celular registrado</label>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <button class="btn waves-effect waves-light btn-av btn-av-full"
+                  onclick="showStep('otp')">
+            <i class="material-icons left">sms</i>Enviar código por SMS
+          </button>
+          <button class="btn waves-effect btn-flat" style="color:#757575;"
+                  onclick="showStep('email')">← Volver
+          </button>
+        </div>
+      </div>
+
+      <!-- Paso 3: Nueva contraseña -->
+      <div id="step-new-pass" style="display:none;">
+        <div class="input-field" style="position:relative;">
+          <i class="material-icons prefix" style="color:#1A237E;">lock</i>
+          <input id="new-pass1" type="password" class="validate" minlength="8">
+          <label for="new-pass1">Nueva contraseña (mín. 8 caracteres)</label>
+          <i class="material-icons pw-toggle suffix" data-target="new-pass1"
+             style="position:absolute;right:0;top:10px;cursor:pointer;color:#9E9E9E;">visibility</i>
+        </div>
+        <div class="input-field" style="position:relative;">
+          <i class="material-icons prefix" style="color:#1A237E;">lock_reset</i>
+          <input id="new-pass2" type="password" class="validate" minlength="8">
+          <label for="new-pass2">Confirmar nueva contraseña</label>
+          <i class="material-icons pw-toggle suffix" data-target="new-pass2"
+             style="position:absolute;right:0;top:10px;cursor:pointer;color:#9E9E9E;">visibility</i>
+        </div>
+        <button class="btn waves-effect waves-light btn-av btn-av-full"
+                onclick="finishReset()">
+          <i class="material-icons left">check_circle</i>Actualizar contraseña
+        </button>
+      </div>
+
+    </div><!-- fin padding -->
+  </div><!-- fin modal-content -->
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect btn-flat grey-text">
+      Cancelar
+    </a>
+  </div>
+</div>
+
+<!-- Footer mínimo -->
+<div style="background:#0D1B6E;padding:1rem;text-align:center;position:relative;z-index:5;">
+  <p style="color:rgba(255,255,255,.38);margin:0;font-size:.78rem;">
+    © 2025 AulaVirtual · I.E. Técnica Nacional · Autor: Juan Alejandro Castañeda Muñoz ·
+    <a href="index.html" style="color:rgba(255,255,255,.55);">Inicio</a> ·
+    <a href="registro.html" style="color:rgba(255,255,255,.55);">Registro</a> ·
+    <a href="informacion.html" style="color:rgba(255,255,255,.55);">La Institución</a>
+  </p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="js/scripts.js"></script>
+<script>
+  // Pasos del modal de recuperación
+  function showStep(step) {
+    ['email','otp','phone','new-pass'].forEach(s => {
+      const el = document.getElementById('step-' + s);
+      if (el) el.style.display = s === step ? '' : 'none';
+    });
+    // Mostrar email enmascarado
+    if (step === 'otp') {
+      const em = document.getElementById('forgot-email')?.value || '';
+      const masked = em.replace(/(.{2})(.*)(@.*)/, '$1***$3');
+      const mEl = document.getElementById('masked-email-show');
+      if (mEl) mEl.textContent = masked || '***@***.edu.co';
+      startCountdown();
+    }
+  }
+
+  // OTP: pasar al siguiente input
+  function nextOtp(el, pos) {
+    if (el.value.length === 1) {
+      const inputs = document.querySelectorAll('.otp-box');
+      if (pos < inputs.length) inputs[pos].focus();
+    }
+  }
+
+  // Countdown 5 minutos
+  function startCountdown() {
+    let secs = 300;
+    const el = document.getElementById('countdown');
+    const t = setInterval(() => {
+      secs--;
+      if (secs <= 0) { clearInterval(t); if (el) el.textContent = '00:00'; return; }
+      const m = String(Math.floor(secs/60)).padStart(2,'0');
+      const s = String(secs%60).padStart(2,'0');
+      if (el) el.textContent = `${m}:${s}`;
+    }, 1000);
+  }
+
+  // Finalizar reset
+  function finishReset() {
+    const p1 = document.getElementById('new-pass1')?.value;
+    const p2 = document.getElementById('new-pass2')?.value;
+    if (!p1 || p1.length < 8) {
+      M.toast({ html: '⚠️ Contraseña muy corta (mín. 8 caracteres).', classes: 'orange darken-2 rounded' });
+      return;
+    }
+    if (p1 !== p2) {
+      M.toast({ html: '⚠️ Las contraseñas no coinciden.', classes: 'red darken-1 rounded' });
+      return;
+    }
+    M.toast({ html: '✅ Contraseña actualizada. ¡Inicia sesión!', classes: 'teal darken-1 rounded', displayLength: 3200 });
+    setTimeout(() => {
+      document.querySelector('#modal-forgot .modal-close')?.click();
+      showStep('email');
+    }, 3400);
+  }
+</script>
+</body>
+</html>
